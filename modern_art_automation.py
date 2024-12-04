@@ -6,13 +6,13 @@ import google.generativeai as genai
 import matplotlib.pyplot as plt
 
 # REMEMBER TO X OUT API KEY, THIS IS MY API KEY AND I DON'T WANT ANYTHING TO HAPPEN IF SOMEONE STEALS IT.
-genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+genai.configure(api_key ="xxxxxxxxxxxxxxxxxxxx")
 
 
-IMAGES_FOLDER = 'surrealism_sculpture_images'
+IMAGES_FOLDER = 'modern_art_images'
 VALID_EXTENSIONS = ('.jpeg', '.jpg', '.png', '.bmp', '.tiff', '.gif')
-CSV_INPUT_FILE = 'surrealism_sculpture_input_expected.csv'
-CSV_OUTPUT_FILE = 'surrealism_sculpture_output.csv'
+CSV_INPUT_FILE = 'modern_art_input_expected.csv'
+CSV_OUTPUT_FILE = 'modern_art_output.csv'
 
 # test_image = PIL.Image.open('surrealism_sculpture_images\\lobster telephone dark.jpeg')
 model = genai.GenerativeModel('gemini-1.5-flash')
@@ -28,7 +28,7 @@ def is_similar(expected, generated, threshold=0.009):
 
 def is_similar_ratio(expected, generated, threshold=0.7):
     ratio = SequenceMatcher(None, expected.lower(), generated.lower()).ratio()
-    return ratio 
+    return ratio
 
 def passFailDisplay():
     labels = ['Pass', 'Fail']
@@ -90,7 +90,7 @@ def process_images_from_csv():
                     numPass += 1
                 else:
                     numFail += 1
-                
+
 
                 # Record the result
                 results.append({
@@ -116,7 +116,7 @@ def process_images_from_csv():
 
         writer.writeheader()
         writer.writerows(results)
-    
+
     print(f"Results have been saved to {CSV_OUTPUT_FILE}")
 
 # for file_name in os.listdir(IMAGES_FOLDER):
@@ -125,11 +125,11 @@ def process_images_from_csv():
 #         try:
 #             # Open the image
 #             test_image = Image.open(file_path)
-            
+
 #             # Generate content for the image
 #             prompt = f"Tell me who made this sculpture in the image: {file_name}"
 #             response = model.generate_content([prompt, test_image])
-            
+
 #             # Print the response
 #             print(f"Response for {file_name}: {response.text}")
 #         except Exception as e:
