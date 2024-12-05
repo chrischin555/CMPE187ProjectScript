@@ -6,13 +6,13 @@ import google.generativeai as genai
 import matplotlib.pyplot as plt
 
 # REMEMBER TO X OUT API KEY, THIS IS MY API KEY AND I DON'T WANT ANYTHING TO HAPPEN IF SOMEONE STEALS IT.
-genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
 
-IMAGES_FOLDER = 'surrealism_sculpture_images'
+IMAGES_FOLDER = 'modern_art_images'
 VALID_EXTENSIONS = ('.jpeg', '.jpg', '.png', '.bmp', '.tiff', '.gif')
-CSV_INPUT_FILE = 'surrealism_sculpture_input_expected.csv'
-CSV_OUTPUT_FILE = 'surrealism_sculpture_output.csv'
+CSV_INPUT_FILE = 'modern_art_input_expected.csv'
+CSV_OUTPUT_FILE = 'modern_art_output.csv'
 
 # test_image = PIL.Image.open('surrealism_sculpture_images\\lobster telephone dark.jpeg')
 model = genai.GenerativeModel('gemini-1.5-flash')
@@ -22,30 +22,24 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 numPass = 0
 numFail = 0
 
-def is_similar(expected, generated, threshold=0.05):
+def is_similar(expected, generated, threshold=0.009):
     ratio = SequenceMatcher(None, expected.lower(), generated.lower()).ratio()
     return ratio >= threshold
 
 def is_similar_ratio(expected, generated, threshold=0.7):
     ratio = SequenceMatcher(None, expected.lower(), generated.lower()).ratio()
-    return ratio 
+    return ratio
 
 def passFailDisplay():
     labels = ['Pass', 'Fail']
     counts = [numPass, numFail]
-    total = numPass + numFail
-    numPassPercentage = (numPass / total) * 100
-
     plt.bar(labels, counts, color=['green', 'red'])
     plt.title('Pass/Fail Results')
     plt.xlabel('Result')
     plt.ylabel('Count')
     plt.xticks(labels)
     for i, count in enumerate(counts):
-        plt.text(i, count + 0.3, str(count), ha='center')  # Add count values above bars
-
-    plt.text(-0.625, -0.5, f"Pass/Fail Percentage {numPassPercentage: .1f}%", fontsize = 12, ha = 'left', va = 'bottom',
-    bbox= dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.5'))
+        plt.text(i, count + 0.5, str(count), ha='center')  # Add count values above bars
     plt.show()
 
 def process_images_from_csv():
@@ -96,7 +90,7 @@ def process_images_from_csv():
                     numPass += 1
                 else:
                     numFail += 1
-                
+
 
                 # Record the result
                 results.append({
@@ -116,13 +110,13 @@ def process_images_from_csv():
                     'Match': 'No'
                 })
     # Write the results to a new CSV file
-    with open(CSV_OUTPUT_FILE, 'w', encoding="utf-8", newline='') as csvfile:
+    with open(CSV_OUTPUT_FILE, 'w', newline='') as csvfile:
         fieldNames = ['Image Name', 'Input', 'Expected Output', 'Generated Output', 'Pass/Fail']
         writer = csv.DictWriter(csvfile, fieldnames = fieldNames)
 
         writer.writeheader()
         writer.writerows(results)
-    
+
     print(f"Results have been saved to {CSV_OUTPUT_FILE}")
 
 # for file_name in os.listdir(IMAGES_FOLDER):
@@ -131,11 +125,11 @@ def process_images_from_csv():
 #         try:
 #             # Open the image
 #             test_image = Image.open(file_path)
-            
+
 #             # Generate content for the image
 #             prompt = f"Tell me who made this sculpture in the image: {file_name}"
 #             response = model.generate_content([prompt, test_image])
-            
+
 #             # Print the response
 #             print(f"Response for {file_name}: {response.text}")
 #         except Exception as e:
