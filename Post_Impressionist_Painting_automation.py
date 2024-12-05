@@ -1,5 +1,6 @@
 import os
 import csv
+import base64
 from PIL import Image
 import google.generativeai as genai
 import matplotlib.pyplot as plt
@@ -7,7 +8,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Setup for the API key and model
-genai.configure(api_key="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")  # Replace with your actual API key
+genai.configure(api_key="XXXXXXXXXXXXXXXXXXXXXXXX")  # Replace with your actual API key
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 # Directories and filenames
@@ -23,6 +24,15 @@ def compute_tfidf_similarity(expected, generated, threshold=0.3):
     similarity = cosine_similarity([vectors[0]], [vectors[1]])[0][0]
     print(f"TF-IDF Cosine Similarity: {similarity}")
     return similarity >= threshold
+
+def encode_image_to_base64(image_path):
+    """Encode an image to Base64 string."""
+    try:
+        with open(image_path, "rb") as image_file:
+            return base64.b64encode(image_file.read()).decode('utf-8')
+    except Exception as e:
+        print(f"Error encoding image {image_path}: {e}")
+        return None
 
 def process_images_from_csv():
     """Main function to process images and inputs from the CSV file."""
@@ -47,9 +57,6 @@ def process_images_from_csv():
             expected_output = row.get('Expected Output', "").strip()
             image_path = os.path.join(IMAGES_FOLDER, image_name) if image_name else ""
 
-            # Log the constructed image path
-            print(f"Constructed image path: {image_path}")
-
             if not image_name and not input_text:
                 print(f"Row {i}: Skipping because both image and input are missing.")
                 continue
@@ -63,12 +70,12 @@ def process_images_from_csv():
                 # Handle image-only inputs
                 elif not input_text:
                     print(f"Row {i}: No text input for image '{image_name}'. Processing image alone...")
-                    generated_output = process_image_only(image_path, image_name)
+                    generated_output = process_image_only(image_path)
                 
                 # Handle combined image and text inputs
                 else:
                     print(f"Row {i}: Processing combined image and text for '{image_name}'...")
-                    generated_output = process_image_and_text(image_path, image_name, input_text)
+                    generated_output = process_image_and_text(image_path, input_text)
 
                 # Compare expected and generated outputs
                 passOrFail = 'Pass' if compute_tfidf_similarity(expected_output, generated_output) else 'Fail'
@@ -108,42 +115,32 @@ def process_text_only(input_text):
     response = model.generate_content([prompt])
     return response.text.strip()
 
-def process_image_only(image_path, image_name):
+def process_image_only(image_path):
     """Generate output for image-only inputs."""
-    if not os.path.exists(image_path):
-        print(f"Image not found: {image_path}")
-        return "Error: Image not found"
-
+    image_base64 = encode_image_to_base64(image_path)
+    if not image_base64:
+        return "Error: Unable to encode image"
+    
     try:
-        with Image.open(image_path) as img:
-            img.verify()  # Validate the image
-            print(f"Image is valid: {image_name}")
-
-        with Image.open(image_path) as img:
-            prompt = f"Describe the image: {image_name}."
-            response = model.generate_content([prompt])
+        prompt = f"Describe the following image: [BASE64_IMAGE:{image_base64}]"
+        response = model.generate_content([prompt])
         return response.text.strip()
     except Exception as e:
-        print(f"Error opening image {image_path}: {e}")
+        print(f"Error processing image {image_path}: {e}")
         return f"Error: {e}"
 
-def process_image_and_text(image_path, image_name, input_text):
+def process_image_and_text(image_path, input_text):
     """Generate output for combined image and text inputs."""
-    if not os.path.exists(image_path):
-        print(f"Image not found: {image_path}")
-        return "Error: Image not found"
+    image_base64 = encode_image_to_base64(image_path)
+    if not image_base64:
+        return "Error: Unable to encode image"
 
     try:
-        with Image.open(image_path) as img:
-            img.verify()  # Validate the image
-            print(f"Image is valid: {image_name}")
-
-        with Image.open(image_path) as img:
-            prompt = f"{input_text} The image is {image_name}."
-            response = model.generate_content([prompt])
+        prompt = f"{input_text} Additionally, describe the following image: [BASE64_IMAGE:{image_base64}]"
+        response = model.generate_content([prompt])
         return response.text.strip()
     except Exception as e:
-        print(f"Error opening image {image_path}: {e}")
+        print(f"Error processing image {image_path} with text input: {e}")
         return f"Error: {e}"
 
 def write_results_to_csv(results):
