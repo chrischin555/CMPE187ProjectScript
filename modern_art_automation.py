@@ -6,7 +6,7 @@ import google.generativeai as genai
 import matplotlib.pyplot as plt
 
 # REMEMBER TO X OUT API KEY, THIS IS MY API KEY AND I DON'T WANT ANYTHING TO HAPPEN IF SOMEONE STEALS IT.
-genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+genai.configure(api_key ="XXXXXXXX")
 
 
 IMAGES_FOLDER = 'modern_art_images'
