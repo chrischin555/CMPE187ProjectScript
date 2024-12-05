@@ -6,8 +6,7 @@ import google.generativeai as genai
 import matplotlib.pyplot as plt
 
 # REMEMBER TO X OUT API KEY, THIS IS MY API KEY AND I DON'T WANT ANYTHING TO HAPPEN IF SOMEONE STEALS IT.
-genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXXXX")
-
+genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXX")
 
 IMAGES_FOLDER = 'chinese_embroidery_images'
 VALID_EXTENSIONS = ('.jpeg', '.jpg', '.png', '.bmp', '.tiff', '.gif')
@@ -33,13 +32,19 @@ def is_similar_ratio(expected, generated, threshold=0.7):
 def passFailDisplay():
     labels = ['Pass', 'Fail']
     counts = [numPass, numFail]
+    total = numPass + numFail
+    numPassPercentage = (numPass / total) * 100
+
     plt.bar(labels, counts, color=['green', 'red'])
     plt.title('Pass/Fail Results')
     plt.xlabel('Result')
     plt.ylabel('Count')
     plt.xticks(labels)
     for i, count in enumerate(counts):
-        plt.text(i, count + 0.5, str(count), ha='center')  # Add count values above bars
+        plt.text(i, count + 0.3, str(count), ha='center')  # Add count values above bars
+
+    plt.text(-0.6, -0.5, f"Pass/Fail Percentage {numPassPercentage: .1f}%", fontsize = 12, ha = 'left', va = 'bottom',
+    bbox= dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.5'))
     plt.show()
 
 def process_images_from_csv():
