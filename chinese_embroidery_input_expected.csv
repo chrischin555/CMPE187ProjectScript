@@ -1,0 +1,61 @@
+Image Name,Input,Expected Output
+a1.png,Woh created the figure?,Shen Shou
+a2.png,Woh created the figure?,Shen Shou
+a3.png,Woh created the figure?,Shen Shou
+a4.png,Woh created the figure?,Shen Shou
+a1.png,When do the figure created?,1835
+a2.png,When do the figure created?,1835
+a3.png,When do the figure created?,1835
+a4.png,When do the figure created?,1835
+a1.png,Who created the figure?,Shen Shou
+a2.png,Who created the figure?,Shen Shou
+a3.png,Who created the figure?,Shen Shou
+a4.png,Who created the figure?,Shen Shou
+a1.png,"According to the figure of Shen Shou, wha technikues are used?",The painting of Shen Shou in the image showcases a blend of traditional Chinese painting techniques with elements of Western influence.
+a2.png,"According to the figure of Shen Shou, wha technikues are used?",The painting of Shen Shou in the image showcases a blend of traditional Chinese painting techniques with elements of Western influence.
+a3.png,"According to the figure of Shen Shou, wha technikues are used?",The painting of Shen Shou in the image showcases a blend of traditional Chinese painting techniques with elements of Western influence.
+a4.png,"According to the figure of Shen Shou, wha technikues are used?",The painting of Shen Shou in the image showcases a blend of traditional Chinese painting techniques with elements of Western influence.
+a1.png,What do the meanings of this representative works of Shen Shou?,"The painting likely represents the concept of the Buddha's teachings (dharma) and the path to enlightenment. The Buddha, as the source of wisdom and compassion, is central, while the Bodhisattvas symbolize the qualities of wisdom and compassion that are necessary to follow the path to enlightenment."
+a2.png,What do the meanings of this representative works of Shen Shou?,"The painting likely represents the concept of the Buddha's teachings (dharma) and the path to enlightenment. The Buddha, as the source of wisdom and compassion, is central, while the Bodhisattvas symbolize the qualities of wisdom and compassion that are necessary to follow the path to enlightenment."
+a3.png,What do the meanings of this representative works of Shen Shou?,"The painting likely represents the concept of the Buddha's teachings (dharma) and the path to enlightenment. The Buddha, as the source of wisdom and compassion, is central, while the Bodhisattvas symbolize the qualities of wisdom and compassion that are necessary to follow the path to enlightenment."
+a4.png,What do the meanings of this representative works of Shen Shou?,"The painting likely represents the concept of the Buddha's teachings (dharma) and the path to enlightenment. The Buddha, as the source of wisdom and compassion, is central, while the Bodhisattvas symbolize the qualities of wisdom and compassion that are necessary to follow the path to enlightenment."
+a1.png,What art movements are included in Shen Shou¡¯s representative work above?,"This encompasses a broad range of styles and techniques, including line drawing, ink wash, and color painting. The painting's use of line drawing and ink wash is characteristic of Guohua. Chinese Buddhist art has a long and rich history, and the depiction of the Buddha and Bodhisattvas is a common theme. The painting's subject matter and style are influenced by Buddhist art traditions."
+a2.png,What art movements are included in Shen Shou¡¯s representative work above?,"This encompasses a broad range of styles and techniques, including line drawing, ink wash, and color painting. The painting's use of line drawing and ink wash is characteristic of Guohua. Chinese Buddhist art has a long and rich history, and the depiction of the Buddha and Bodhisattvas is a common theme. The painting's subject matter and style are influenced by Buddhist art traditions."
+a3.png,What art movements are included in Shen Shou¡¯s representative work above?,"This encompasses a broad range of styles and techniques, including line drawing, ink wash, and color painting. The painting's use of line drawing and ink wash is characteristic of Guohua. Chinese Buddhist art has a long and rich history, and the depiction of the Buddha and Bodhisattvas is a common theme. The painting's subject matter and style are influenced by Buddhist art traditions."
+a4.png,What art movements are included in Shen Shou¡¯s representative work above?,"This encompasses a broad range of styles and techniques, including line drawing, ink wash, and color painting. The painting's use of line drawing and ink wash is characteristic of Guohua. Chinese Buddhist art has a long and rich history, and the depiction of the Buddha and Bodhisattvas is a common theme. The painting's subject matter and style are influenced by Buddhist art traditions."
+b1.png,"According to the figure, wha technikues are used?",I can't help with images of people yet.
+b2.png,"According to the figure, wha technikues are used?",I can't help with images of people yet.
+b3.png,"According to the figure, wha technikues are used?",I can't help with images of people yet.
+b4.png,"According to the figure, wha technikues are used?",I can't help with images of people yet.
+b1.png,When do the figure created?,I can't help with images of people yet.
+b2.png,When do the figure created?,I can't help with images of people yet.
+b3.png,When do the figure created?,I can't help with images of people yet.
+b4.png,When do the figure created?,I can't help with images of people yet.
+c1.png,Who created the figure?,Shen Shou
+c2.png,Who created the figure?,Shen Shou
+c3.png,Who created the figure?,Shen Shou
+c4.png,Who created the figure?,Shen Shou
+c1.png,When do the figure created?,971
+c2.png,When do the figure created?,971
+c3.png,When do the figure created?,971
+c4.png,When do the figure created?,971
+c1.png,"According to the figure of Shen Shou, wha technikues are used?","Based on the image, this appears to be a Chinese painting, likely created using traditional Chinese painting techniques. Here are some possible techniques used in this artwork: Ink Wash Painting, Brushwork, Composition"
+c2.png,"According to the figure of Shen Shou, wha technikues are used?","Based on the image, this appears to be a Chinese painting, likely created using traditional Chinese painting techniques. Here are some possible techniques used in this artwork: Ink Wash Painting, Brushwork, Composition"
+c3.png,"According to the figure of Shen Shou, wha technikues are used?","Based on the image, this appears to be a Chinese painting, likely created using traditional Chinese painting techniques. Here are some possible techniques used in this artwork: Ink Wash Painting, Brushwork, Composition"
+c4.png,"According to the figure of Shen Shou, wha technikues are used?","Based on the image, this appears to be a Chinese painting, likely created using traditional Chinese painting techniques. Here are some possible techniques used in this artwork: Ink Wash Painting, Brushwork, Composition"
+d1.png,Was it created by Shen Shou?,"Yes, it was created by Shen Shou."
+d2.png,Was it created by Shen Shou?,"Yes, it was created by Shen Shou."
+d3.png,Was it created by Shen Shou?,"Yes, it was created by Shen Shou."
+d4.png,Was it created by Shen Shou?,"Yes, it was created by Shen Shou."
+d1.png,When do the figure created?,It was created by Shen Shou in 1947 using the random stitching technique
+d2.png,When do the figure created?,It was created by Shen Shou in 1947 using the random stitching technique
+d3.png,When do the figure created?,It was created by Shen Shou in 1947 using the random stitching technique
+d4.png,When do the figure created?,It was created by Shen Shou in 1947 using the random stitching technique
+d1.png,"According to the figure of Shen Shou, wha technikues are used?","This painting appears to be a portrait in a style that aligns with Impressionism. Impressionist artists used various techniques to capture the fleeting effects of light and color. Some potential techniques used in this painting might include: Soft Focus, Loose Brushwork, Muted Colors, Chiaroscuro"
+d2.png,"According to the figure of Shen Shou, wha technikues are used?","This painting appears to be a portrait in a style that aligns with Impressionism. Impressionist artists used various techniques to capture the fleeting effects of light and color. Some potential techniques used in this painting might include: Soft Focus, Loose Brushwork, Muted Colors, Chiaroscuro"
+d3.png,"According to the figure of Shen Shou, wha technikues are used?","This painting appears to be a portrait in a style that aligns with Impressionism. Impressionist artists used various techniques to capture the fleeting effects of light and color. Some potential techniques used in this painting might include: Soft Focus, Loose Brushwork, Muted Colors, Chiaroscuro"
+d4.png,"According to the figure of Shen Shou, wha technikues are used?","This painting appears to be a portrait in a style that aligns with Impressionism. Impressionist artists used various techniques to capture the fleeting effects of light and color. Some potential techniques used in this painting might include: Soft Focus, Loose Brushwork, Muted Colors, Chiaroscuro"
+d1.png,What do the meanings of this representative works of Shen Shou?,The painting appears to be a portrait in a style that aligns with Impressionism. Impressionist artists used various techniques to capture the fleeting effects of light and color
+d2.png,What do the meanings of this representative works of Shen Shou?,The painting appears to be a portrait in a style that aligns with Impressionism. Impressionist artists used various techniques to capture the fleeting effects of light and color
+d3.png,What do the meanings of this representative works of Shen Shou?,The painting appears to be a portrait in a style that aligns with Impressionism. Impressionist artists used various techniques to capture the fleeting effects of light and color
+d4.png,What do the meanings of this representative works of Shen Shou?,The painting appears to be a portrait in a style that aligns with Impressionism. Impressionist artists used various techniques to capture the fleeting effects of light and color

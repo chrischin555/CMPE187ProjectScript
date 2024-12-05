@@ -6,13 +6,13 @@ import google.generativeai as genai
 import matplotlib.pyplot as plt
 
 # REMEMBER TO X OUT API KEY, THIS IS MY API KEY AND I DON'T WANT ANYTHING TO HAPPEN IF SOMEONE STEALS IT.
-genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+genai.configure(api_key ="AIzaSyB9NeI6czs_ZB6a0LIq_lcIjxyED10Bcp0")
 
 
-IMAGES_FOLDER = 'surrealism_sculpture_images'
+IMAGES_FOLDER = 'chinese_embroidery_images'
 VALID_EXTENSIONS = ('.jpeg', '.jpg', '.png', '.bmp', '.tiff', '.gif')
-CSV_INPUT_FILE = 'surrealism_sculpture_input_expected.csv'
-CSV_OUTPUT_FILE = 'surrealism_sculpture_output.csv'
+CSV_INPUT_FILE = 'chinese_embroidery_input_expected.csv'
+CSV_OUTPUT_FILE = 'chinese_embroidery_output.csv'
 
 # test_image = PIL.Image.open('surrealism_sculpture_images\\lobster telephone dark.jpeg')
 model = genai.GenerativeModel('gemini-1.5-flash')
@@ -45,7 +45,7 @@ def passFailDisplay():
 def process_images_from_csv():
     global numPass, numFail
     # read CSV file
-    with open(CSV_INPUT_FILE, 'r') as csvfile:
+    with open(CSV_INPUT_FILE, 'r', encoding="utf-8", errors="ignore") as csvfile:
         reader = list(csv.DictReader(csvfile))
         # to keep track of how many rows im currently at, remove later
         total_rows = len(reader)
