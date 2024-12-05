@@ -6,7 +6,7 @@ import google.generativeai as genai
 import matplotlib.pyplot as plt
 
 # REMEMBER TO X OUT API KEY, THIS IS MY API KEY AND I DON'T WANT ANYTHING TO HAPPEN IF SOMEONE STEALS IT.
-genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXXXX")
 
 
 IMAGES_FOLDER = 'chinese_embroidery_images'
@@ -110,7 +110,7 @@ def process_images_from_csv():
                     'Match': 'No'
                 })
     # Write the results to a new CSV file
-    with open(CSV_OUTPUT_FILE, 'w', newline='') as csvfile:
+    with open(CSV_OUTPUT_FILE, 'w', encoding="utf-8", newline='') as csvfile:
         fieldNames = ['Image Name', 'Input', 'Expected Output', 'Generated Output', 'Pass/Fail']
         writer = csv.DictWriter(csvfile, fieldnames = fieldNames)
 
