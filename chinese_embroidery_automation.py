@@ -6,7 +6,7 @@ import google.generativeai as genai
 import matplotlib.pyplot as plt
 
 # REMEMBER TO X OUT API KEY, THIS IS MY API KEY AND I DON'T WANT ANYTHING TO HAPPEN IF SOMEONE STEALS IT.
-genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXX")
+genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
 IMAGES_FOLDER = 'chinese_embroidery_images'
 VALID_EXTENSIONS = ('.jpeg', '.jpg', '.png', '.bmp', '.tiff', '.gif')
@@ -21,7 +21,7 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 numPass = 0
 numFail = 0
 
-def is_similar(expected, generated, threshold=0.009):
+def is_similar(expected, generated, threshold=0.003):
     ratio = SequenceMatcher(None, expected.lower(), generated.lower()).ratio()
     return ratio >= threshold
 
