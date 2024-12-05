@@ -6,7 +6,7 @@ import google.generativeai as genai
 import matplotlib.pyplot as plt
 
 # REMEMBER TO X OUT API KEY, THIS IS MY API KEY AND I DON'T WANT ANYTHING TO HAPPEN IF SOMEONE STEALS IT.
-genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+genai.configure(api_key ="AIzaSyB9NeI6czs_ZB6a0LIq_lcIjxyED10Bcp0")
 
 
 IMAGES_FOLDER = 'surrealism_sculpture_images'
@@ -22,7 +22,7 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 numPass = 0
 numFail = 0
 
-def is_similar(expected, generated, threshold=0.009):
+def is_similar(expected, generated, threshold=0.05):
     ratio = SequenceMatcher(None, expected.lower(), generated.lower()).ratio()
     return ratio >= threshold
 
