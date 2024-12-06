@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Setup for the API key and model
-genai.configure(api_key="XXXXXXXXXXXXXXXXXXXXXXXX")  # Replace with your actual API key
+genai.configure(api_key="X")  # Replace with your actual API key
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 # Directories and filenames
