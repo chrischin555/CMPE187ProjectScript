@@ -14,7 +14,7 @@ from werkzeug.utils import secure_filename
 import zipfile
 
 # REMEMBER TO X OUT API KEY, THIS IS MY API KEY AND I DON'T WANT ANYTHING TO HAPPEN IF SOMEONE STEALS IT.
-genai.configure(api_key ="AIzaSyCeihAQWc3hN_FgPwE0ALeX3WH5Oimk_8I")
+genai.configure(api_key ="XXXXXX")
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
