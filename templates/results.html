@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Results</title>
+</head>
+<body>
+    <h1>Processing Results</h1>
+    <p><strong>Pass:</strong> {{ pass_fail_stats['numPass'] }}</p>
+    <p><strong>Fail:</strong> {{ pass_fail_stats['numFail'] }}</p>
+
+    <h2>Folder-wise Statistics:</h2>
+    <ul>
+        {% for folder, stats in pass_fail_stats['folder_stats'].items() %}
+            <li>{{ folder }} - Pass: {{ stats['Pass'] }}, Fail: {{ stats['Fail'] }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('download_output') }}">Download Results CSV</a>
+    <h2>Results Chart</h2>
+    <img src="{{ url_for('static', filename=chart_filename) }}" alt="Results Chart">
+</body>
+</html>
