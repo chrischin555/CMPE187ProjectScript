@@ -14,43 +14,61 @@ from werkzeug.utils import secure_filename
 import zipfile
 
 # REMEMBER TO X OUT API KEY, THIS IS MY API KEY AND I DON'T WANT ANYTHING TO HAPPEN IF SOMEONE STEALS IT.
-genai.configure(api_key ="XXXXXXXXXXXXXXXXXXXXXXXXXX")
+genai.configure(api_key ="X")
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'csv'}
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-# IMAGES_FOLDER = 'surrealism_sculpture_images'
-# VALID_EXTENSIONS = ('.jpeg', '.jpg', '.png', '.bmp', '.tiff', '.gif')
-# CSV_INPUT_FILE = 'surrealism_sculpture_input_expected.csv'
-# CSV_OUTPUT_FILE = 'surrealism_sculpture_output.csv'
-
-# os.makedirs(IMAGES_FOLDER, exist_ok=True)
-
-# test_image = PIL.Image.open('surrealism_sculpture_images\\lobster telephone dark.jpeg')
 model = genai.GenerativeModel('gemini-1.5-flash')
-# response = model.generate_content(["Tell me who made this sculpture.", test_image])
-# print(response.text)
-
 
 def extract_zip(zipPath, extractTo):
-    """Extract the uploaded ZIP file."""
+    """
+    Extracts a ZIP file uploaded by the user.
+    Args:
+        zipPath (String): The path of the ZIP file.
+        extractTo (String): The path to extract the ZIP file to.
+
+    """
     with zipfile.ZipFile(zipPath, 'r') as zip_ref:
         zip_ref.extractall(extractTo)
 
 def is_similar(expected, generated, threshold=0.05):
+    """
+    Determines if two strings are similar.
+    Args:
+        expected (String): expected output from CSV file
+        generated (String): generated output from Google Gemini
+        threshold (double): a boundary value that determines if a case passes or fails
+    Returns:
+        True (pass) if ratio is above threshold, false otherwise.
+
+    """
     similarity_ratio = compute_cosine_similarity(expected, generated)
     return similarity_ratio >= threshold
 
 def compute_cosine_similarity(expected, generated):
+    """
+    Computes the cosine similarity between two strings.
+    Args:
+        expected (String): expected output from CSV file
+        generated (String): generated output from Google Gemini
+    Returns:
+        double: the computed cosine similarity 
+
+    """
     vectorizer = TfidfVectorizer()
     tfidf_matrix = vectorizer.fit_transform([expected.lower(), generated.lower()])
     similarity_matrix = cosine_similarity(tfidf_matrix)
     return similarity_matrix[0, 1]
 
 def results_chart(pass_fail_stats):
-    """Display a pie chart of pass/fail results."""
+    """
+    Display a pie chart of pass/fail results.
+    Args:
+        pass_fail_stats (array): the results from computing the pass/fail rate  
+    """
     numPass = pass_fail_stats['numPass']
     numFail = pass_fail_stats['numFail']
     labels = ['Pass', 'Fail']
@@ -69,6 +87,18 @@ def results_chart(pass_fail_stats):
     plt.close()
 
 def process_images_from_csv(csv_path, images_folder, output_path):
+    """
+    Processes the images listed in the CSV file with the corresponding folder.
+    Args:
+        csv_path (string): path to CSV folder
+        images_folder (string): path to images folder
+        output_path (string): path to output CSV file
+    Returns:
+        numPass (int): number of passes
+        numFail (int): number of fails
+        folderStats (dictionary): the number of passes and fails according to the images in the folder
+
+    """
     numPass = 0
     numFail = 0
     folderStats = {}
@@ -156,6 +186,9 @@ def process_images_from_csv(csv_path, images_folder, output_path):
         
 @app.route('/', methods=['GET', 'POST'])
 def upload_files():
+    """
+    Route for uploading the files.
+    """
     if request.method == 'POST':
         csv_file = request.files.get('csv_file')
         image_zip = request.files.get('image_zip')
@@ -191,13 +224,11 @@ def upload_files():
 
 @app.route('/download')
 def download_output():
-    """Download the output CSV file."""
+    """
+    Download the output CSV file.
+    """
     output_path = os.path.join(app.config['UPLOAD_FOLDER'], 'output.csv')
     return send_file(output_path, as_attachment=True)
-
-# Call function
-# process_images_from_csv()
-# passFailDisplay()
 
 if __name__ == '__main__':
     app.run(debug=True)
